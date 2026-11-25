@@ -1,104 +1,337 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GLOBAL ENERGY & TECHNOLOGY - حلول الطاقة الشمسية والتكنولوجيا ومراقبة الأنظمة">
 <title>GLOBAL ENERGY & TECHNOLOGY</title>
+
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#101827;color:white;line-height:1.8}
-header{background:#17243a;padding:18px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-bottom:2px solid #35c9a0}
-.logo{font-size:21px;font-weight:bold;color:#35c9a0}
-nav{display:flex;gap:15px;flex-wrap:wrap}
-nav a{color:white;text-decoration:none;font-size:14px}
-nav a:hover{color:#35c9a0}
-.hero{text-align:center;padding:75px 20px;background:linear-gradient(135deg,#17243a,#164e50)}
-.hero h1{font-size:32px;color:#35c9a0}
-.hero p{max-width:650px;margin:15px auto;color:#d5e3e8}
-.btn{display:inline-block;padding:11px 23px;margin:8px;border-radius:8px;background:#35c9a0;color:#10202a;text-decoration:none;font-weight:bold}
-.btn.secondary{background:transparent;border:1px solid #35c9a0;color:#35c9a0}
-section{padding:55px 6%;text-align:center}
-.section-title{color:#35c9a0;font-size:26px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:30px}
-.card{background:#1c2b40;padding:25px 18px;border-radius:13px;border:1px solid #30445c}
-.card h3{color:#35c9a0}
-.card p{color:#d0d8e2;font-size:14px}
-.icon{font-size:35px}
-.about{background:#17243a}
-footer{background:#0b1220;text-align:center;padding:25px;color:#aebdca;font-size:13px}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: #101827;
+    color: #ffffff;
+    line-height: 1.8;
+}
+
+header {
+    background: #17243a;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 2px solid #35c9a0;
+}
+
+.logo {
+    color: #35c9a0;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #35c9a0;
+}
+
+.hero {
+    text-align: center;
+    padding: 85px 20px;
+    background: linear-gradient(135deg, #17243a, #101827);
+}
+
+.hero h1 {
+    color: #35c9a0;
+    font-size: 34px;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    max-width: 750px;
+    margin: auto;
+    color: #d0d9e5;
+    font-size: 17px;
+}
+
+.buttons {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #35c9a0;
+    color: #10202a;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn.secondary {
+    background: transparent;
+    border: 1px solid #35c9a0;
+    color: #35c9a0;
+}
+
+section {
+    padding: 55px 7%;
+}
+
+.section-title {
+    text-align: center;
+    color: #35c9a0;
+    font-size: 27px;
+    margin-bottom: 30px;
+}
+
+.section-description {
+    text-align: center;
+    color: #c5cfdd;
+    max-width: 750px;
+    margin: -15px auto 30px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    background: #1c2b40;
+    border: 1px solid #30445c;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.card:hover {
+    border-color: #35c9a0;
+    transform: translateY(-3px);
+}
+
+.icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.card h3 {
+    color: #35c9a0;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #c5cfdd;
+    font-size: 14px;
+}
+
+.highlight {
+    background: #17243a;
+    text-align: center;
+}
+
+.highlight p {
+    max-width: 750px;
+    margin: auto;
+    color: #d0d9e5;
+}
+
+footer {
+    background: #0b1220;
+    text-align: center;
+    padding: 25px 15px;
+    color: #bdc9d5;
+    font-size: 13px;
+}
+
+footer p {
+    margin: 5px;
+}
+
+@media (max-width: 600px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    section {
+        padding: 40px 18px;
+    }
+}
 </style>
 </head>
+
 <body>
+
 <header>
-<div class="logo">GLOBAL ENERGY</div>
-<nav>
-<a href="#home">الرئيسية</a>
-<a href="#solar">الطاقة الشمسية</a>
-<a href="#monitoring">المراقبة</a>
-<a href="#services">خدماتنا</a>
-<a href="#store">المتجر</a>
-<a href="#about">من نحن</a>
-</nav>
+    <div class="logo">GLOBAL ENERGY</div>
+
+    <nav>
+        <a href="#home">الرئيسية</a>
+        <a href="#solar">الطاقة الشمسية</a>
+        <a href="monitor.html">مراقبة المحطات</a>
+        <a href="#services">خدماتنا</a>
+        <a href="#store">المتجر</a>
+        <a href="#about">من نحن</a>
+    </nav>
 </header>
 
 <div class="hero" id="home">
-<h1>GLOBAL ENERGY & TECHNOLOGY</h1>
-<p>منصتك المتكاملة للطاقة الشمسية والتكنولوجيا ومراقبة أنظمة الطاقة وإدارة الخدمات الهندسية.</p>
-<a class="btn" href="#solar">اكتشف خدماتنا</a>
-<a class="btn secondary" href="#monitoring">مراقبة المحطات</a>
+    <h1>GLOBAL ENERGY & TECHNOLOGY</h1>
+
+    <p>
+        منصة متخصصة في أنظمة الطاقة الشمسية والتكنولوجيا،
+        وتطوير حلول ذكية لمراقبة وإدارة محطات الطاقة
+        وتقديم الخدمات للمستخدمين والشركات.
+    </p>
+
+    <div class="buttons">
+        <a class="btn" href="#solar">اكتشف خدماتنا</a>
+        <a class="btn secondary" href="monitor.html">مراقبة المحطات</a>
+    </div>
 </div>
 
 <section id="solar">
-<h2 class="section-title">أنظمة الطاقة الشمسية</h2>
-<p>حلول متكاملة لأنظمة الطاقة الشمسية بمختلف أنواعها.</p>
-<div class="cards">
-<div class="card"><div class="icon">☀️</div><h3>أنظمة ON GRID</h3><p>حلول الطاقة المرتبطة بشبكة الكهرباء.</p></div>
-<div class="card"><div class="icon">🔋</div><h3>أنظمة OFF GRID</h3><p>أنظمة مستقلة لتوفير الطاقة وتخزينها.</p></div>
-<div class="card"><div class="icon">⚡</div><h3>أنظمة HYBRID</h3><p>حلول تجمع بين الشبكة والبطاريات والطاقة الشمسية.</p></div>
-</div>
+    <h2 class="section-title">أنظمة الطاقة الشمسية</h2>
+
+    <p class="section-description">
+        حلول متكاملة للطاقة الشمسية، من اختيار المعدات
+        إلى التركيب والتشغيل والمتابعة.
+    </p>
+
+    <div class="cards">
+        <div class="card">
+            <div class="icon">☀️</div>
+            <h3>الألواح الشمسية</h3>
+            <p>توفير حلول الألواح الشمسية بمختلف القدرات والأنواع.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>الإنفرترات</h3>
+            <p>حلول الإنفرترات لأنظمة الطاقة المنزلية والتجارية.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔋</div>
+            <h3>البطاريات</h3>
+            <p>حلول تخزين الطاقة وإدارة البطاريات.</p>
+        </div>
+    </div>
 </section>
 
-<section id="monitoring" class="about">
-<h2 class="section-title">مراقبة محطات الطاقة</h2>
-<p>منصة مستقبلية لمتابعة أداء محطات الطاقة الشمسية ومراقبة الإنفرترات والبطاريات من مكان واحد.</p>
-<div class="cards">
-<div class="card"><div class="icon">📊</div><h3>متابعة الإنتاج</h3><p>عرض بيانات إنتاج الطاقة واستهلاكها.</p></div>
-<div class="card"><div class="icon">🔔</div><h3>التنبيهات</h3><p>التنبيه عند وجود أعطال أو انخفاض في الأداء.</p></div>
-<div class="card"><div class="icon">🌐</div><h3>إدارة المحطات</h3><p>إدارة عدة محطات من لوحة متابعة موحدة.</p></div>
-</div>
-<p><small>خدمات المراقبة الفعلية سيتم تفعيلها في مراحل التطوير القادمة.</small></p>
+<section class="highlight">
+    <h2 class="section-title">مراقبة محطات الطاقة</h2>
+
+    <p>
+        نعمل على تطوير نظام موحد لمراقبة محطات الطاقة الشمسية
+        ومتابعة الإنتاج والاستهلاك وحالة الإنفرترات والبطاريات.
+    </p>
+
+    <div class="buttons">
+        <a class="btn" href="monitor.html">الدخول إلى نظام المراقبة</a>
+    </div>
 </section>
 
 <section id="services">
-<h2 class="section-title">خدماتنا</h2>
-<div class="cards">
-<div class="card"><div class="icon">🛠️</div><h3>الصيانة والتركيب</h3><p>خدمات فنية لأنظمة الطاقة الشمسية.</p></div>
-<div class="card"><div class="icon">👨‍🔧</div><h3>دليل الفنيين</h3><p>منصة للتعريف بمقدمي الخدمات الفنية.</p></div>
-<div class="card"><div class="icon">💡</div><h3>الاستشارات الهندسية</h3><p>حلول واستشارات في مجال الطاقة والتكنولوجيا.</p></div>
-</div>
+    <h2 class="section-title">خدماتنا</h2>
+
+    <div class="cards">
+        <div class="card">
+            <div class="icon">🛠️</div>
+            <h3>خدمات فنية</h3>
+            <p>خدمات التركيب والصيانة والدعم الفني لأنظمة الطاقة.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">👨‍🔧</div>
+            <h3>دليل مقدمي الخدمات</h3>
+            <p>الوصول إلى الفنيين ومقدمي خدمات الطاقة الشمسية.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📋</div>
+            <h3>الاستشارات الهندسية</h3>
+            <p>خدمات الاستشارات والحلول الهندسية المتخصصة.</p>
+        </div>
+    </div>
 </section>
 
-<section id="store" class="about">
-<h2 class="section-title">المتجر الإلكتروني</h2>
-<p>مساحة مخصصة لعرض منتجات ومعدات الطاقة الشمسية.</p>
-<div class="cards">
-<div class="card"><div class="icon">🔌</div><h3>الإنفرترات</h3><p>عرض أجهزة تحويل الطاقة.</p></div>
-<div class="card"><div class="icon">🔋</div><h3>البطاريات</h3><p>منتجات تخزين الطاقة.</p></div>
-<div class="card"><div class="icon">☀️</div><h3>الألواح الشمسية</h3><p>عرض ألواح ومستلزمات الطاقة الشمسية.</p></div>
-</div>
+<section id="store">
+    <h2 class="section-title">المتجر</h2>
+
+    <p class="section-description">
+        مساحة مخصصة لعرض منتجات ومعدات الطاقة الشمسية
+        وربط التجار بالعملاء.
+    </p>
+
+    <div class="cards">
+        <div class="card">
+            <div class="icon">🛒</div>
+            <h3>منتجات الطاقة</h3>
+            <p>الألواح والإنفرترات والبطاريات ومستلزمات الطاقة.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🏪</div>
+            <h3>التجار والموردون</h3>
+            <p>مساحة مستقبلية للتجار لعرض منتجاتهم وخدماتهم.</p>
+        </div>
+    </div>
 </section>
 
-<section id="about">
-<h2 class="section-title">من نحن</h2>
-<p>GLOBAL ENERGY & TECHNOLOGY مشروع يهدف إلى بناء منصة عالمية تجمع الطاقة الشمسية والتكنولوجيا والخدمات الهندسية والتجارة ومراقبة أنظمة الطاقة.</p>
+<section id="about" class="highlight">
+    <h2 class="section-title">من نحن</h2>
+
+    <p>
+        GLOBAL ENERGY & TECHNOLOGY منصة تهدف إلى تطوير
+        قطاع الطاقة الشمسية والتكنولوجيا، وتسهيل الوصول
+        إلى الخدمات والمعلومات والحلول الحديثة،
+        وبناء شبكة عمل متكاملة قابلة للتوسع عالمياً.
+    </p>
 </section>
 
 <footer>
-<p>GLOBAL ENERGY & TECHNOLOGY</p>
-<p>نحو مستقبل أكثر ذكاءً واستدامة</p>
-<p>© 2026 جميع الحقوق محفوظة</p>
+    <p>GLOBAL ENERGY & TECHNOLOGY</p>
+    <p>نحو مستقبل أكثر ذكاءً واستدامة</p>
+    <p>© 2026 جميع الحقوق محفوظة</p>
 </footer>
+
 </body>
 </html>
