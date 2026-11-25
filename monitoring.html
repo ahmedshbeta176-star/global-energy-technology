@@ -16,26 +16,34 @@ h2,h3{color:#35c9a0}
 .value{font-size:25px;color:#35c9a0;font-weight:bold}
 label{display:block;margin:10px 0 5px}
 input,select{width:100%;padding:12px;border-radius:7px;border:1px solid #52647a;background:#101827;color:white}
-button,.btn{display:inline-block;background:#35c9a0;color:#10202a;padding:11px 20px;border:0;border-radius:7px;font-weight:bold;cursor:pointer;text-decoration:none;margin-top:12px}
+button,.btn{display:inline-block;background:#35c9a0;color:#10202a;padding:11px 20px;border:0;border-radius:7px;font-weight:bold;cursor:pointer;text-decoration:none;margin:5px}
+.delete{background:#d9534f;color:white}
+.edit{background:#e6b84c;color:#17243a}
 .muted{color:#bdc9d5;font-size:13px}
 .status{color:#f4c66b}
 </style>
 </head>
 <body>
+
 <header>
 <h2>GLOBAL ENERGY & TECHNOLOGY</h2>
 <div>نظام مراقبة محطات الطاقة الشمسية</div>
 </header>
+
 <main>
 <a class="btn" href="index.html">العودة للرئيسية</a>
+
 <section class="panel">
 <h2>لوحة مراقبة المحطات</h2>
 <p>تابع محطاتك وأنظمة الطاقة من مكان واحد.</p>
 </section>
+
 <section class="panel">
-<h3>إضافة محطة جديدة</h3>
+<h3 id="formTitle">إضافة محطة جديدة</h3>
+
 <label>اسم المحطة</label>
 <input id="stationName" placeholder="مثلاً: محطة المنزل">
+
 <label>نوع الإنفرتر</label>
 <select id="inverter">
 <option value="">اختر نوع الإنفرتر</option>
@@ -48,17 +56,23 @@ button,.btn{display:inline-block;background:#35c9a0;color:#10202a;padding:11px 2
 <option>Deye</option>
 <option>DYA</option>
 </select>
+
 <label>قدرة المحطة بالكيلوواط</label>
-<input id="capacity" type="number" min="0" placeholder="مثلاً 10">
-<button onclick="addStation()">إضافة المحطة</button>
+<input id="capacity" type="number" min="0.1" step="0.1" placeholder="مثلاً 10">
+
+<button onclick="addStation()" id="saveButton">إضافة المحطة</button>
+<button onclick="cancelEdit()" id="cancelButton" hidden>إلغاء التعديل</button>
+
 <div id="message" class="muted"></div>
 </section>
+
 <section class="panel">
 <h3>محطاتي</h3>
 <div id="stations" class="grid">
-<p class="muted">لم تتم إضافة محطات بعد.</p>
+<p class="muted">جاري تحميل المحطات...</p>
 </div>
 </section>
+
 <section class="panel">
 <h3>مؤشرات الطاقة</h3>
 <div class="grid">
@@ -70,34 +84,160 @@ button,.btn{display:inline-block;background:#35c9a0;color:#10202a;padding:11px 2
 <p class="status">هذه واجهة تجريبية. البيانات الحقيقية تحتاج ربطاً بأجهزة الإنفرتر وواجهات المراقبة الخاصة بها.</p>
 </section>
 </main>
+
 <script>
-function addStation(){
-const name=document.getElementById('stationName').value.trim();
-const inverter=document.getElementById('inverter').value;
-const capacity=document.getElementById('capacity').value;
-const message=document.getElementById('message');
-if(!name||!inverter||!capacity||Number(capacity)<=0){
-message.textContent='يرجى إدخال جميع بيانات المحطة بشكل صحيح.';
-return;
+const STORAGE_KEY = 'global_energy_stations_v1';
+let editingId = null;
+
+function getStations() {
+    try {
+        const data = localStorage.getItem(STORAGE_KEY);
+        return data ? JSON.parse(data) : [];
+    } catch (error) {
+        return [];
+    }
 }
-const card=document.createElement('div');
-card.className='panel';
-const title=document.createElement('h3');
-title.textContent=name;
-const details=document.createElement('p');
-details.textContent='الإنفرتر: '+inverter+' | القدرة: '+capacity+' kW';
-const status=document.createElement('p');
-status.className='status';
-status.textContent='بانتظار ربط الجهاز';
-card.append(title,details,status);
-const stations=document.getElementById('stations');
-if(stations.querySelector('.muted'))stations.innerHTML='';
-stations.appendChild(card);
-document.getElementById('stationName').value='';
-document.getElementById('inverter').value='';
-document.getElementById('capacity').value='';
-message.textContent='تمت إضافة المحطة إلى القائمة التجريبية.';
+
+function saveStations(stations) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(stations));
 }
+
+function showMessage(text) {
+    document.getElementById('message').textContent = text;
+}
+
+function renderStations() {
+    const stations = getStations();
+    const container = document.getElementById('stations');
+    container.innerHTML = '';
+
+    if (stations.length === 0) {
+        const empty = document.createElement('p');
+        empty.className = 'muted';
+        empty.textContent = 'لم تتم إضافة محطات بعد.';
+        container.appendChild(empty);
+        return;
+    }
+
+    stations.forEach(station => {
+        const card = document.createElement('div');
+        card.className = 'panel';
+
+        const title = document.createElement('h3');
+        title.textContent = station.name;
+
+        const details = document.createElement('p');
+        details.textContent =
+            'الإنفرتر: ' + station.inverter +
+            ' | القدرة: ' + station.capacity + ' kW';
+
+        const status = document.createElement('p');
+        status.className = 'status';
+        status.textContent = 'بانتظار ربط الجهاز';
+
+        const editButton = document.createElement('button');
+        editButton.className = 'edit';
+        editButton.textContent = 'تعديل';
+        editButton.onclick = () => editStation(station.id);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'delete';
+        deleteButton.textContent = 'حذف';
+        deleteButton.onclick = () => deleteStation(station.id);
+
+        card.append(title, details, status, editButton, deleteButton);
+        container.appendChild(card);
+    });
+}
+
+function addStation() {
+    const name = document.getElementById('stationName').value.trim();
+    const inverter = document.getElementById('inverter').value;
+    const capacity = Number(document.getElementById('capacity').value);
+
+    if (!name || !inverter || !Number.isFinite(capacity) || capacity <= 0) {
+        showMessage('يرجى إدخال جميع البيانات بشكل صحيح.');
+        return;
+    }
+
+    const stations = getStations();
+
+    if (editingId !== null) {
+        const index = stations.findIndex(s => s.id === editingId);
+        if (index === -1) {
+            showMessage('لم يتم العثور على المحطة.');
+            return;
+        }
+
+        stations[index].name = name;
+        stations[index].inverter = inverter;
+        stations[index].capacity = capacity;
+    } else {
+        stations.push({
+            id: Date.now().toString() + Math.random().toString(16).slice(2),
+            name,
+            inverter,
+            capacity
+        });
+    }
+
+    try {
+        saveStations(stations);
+        renderStations();
+        clearForm();
+        showMessage('تم حفظ المحطة بنجاح.');
+    } catch (error) {
+        showMessage('تعذر الحفظ. تحقق من مساحة التخزين في المتصفح.');
+    }
+}
+
+function editStation(id) {
+    const station = getStations().find(s => s.id === id);
+    if (!station) return;
+
+    editingId = id;
+    document.getElementById('stationName').value = station.name;
+    document.getElementById('inverter').value = station.inverter;
+    document.getElementById('capacity').value = station.capacity;
+    document.getElementById('formTitle').textContent = 'تعديل المحطة';
+    document.getElementById('saveButton').textContent = 'حفظ التعديلات';
+    document.getElementById('cancelButton').hidden = false;
+    showMessage('عدّل البيانات ثم اضغط حفظ التعديلات.');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function deleteStation(id) {
+    if (!confirm('هل أنت متأكد من حذف هذه المحطة؟')) return;
+
+    const stations = getStations().filter(s => s.id !== id);
+
+    try {
+        saveStations(stations);
+        renderStations();
+        if (editingId === id) clearForm();
+        showMessage('تم حذف المحطة.');
+    } catch (error) {
+        showMessage('تعذر حذف المحطة.');
+    }
+}
+
+function clearForm() {
+    editingId = null;
+    document.getElementById('stationName').value = '';
+    document.getElementById('inverter').value = '';
+    document.getElementById('capacity').value = '';
+    document.getElementById('formTitle').textContent = 'إضافة محطة جديدة';
+    document.getElementById('saveButton').textContent = 'إضافة المحطة';
+    document.getElementById('cancelButton').hidden = true;
+}
+
+function cancelEdit() {
+    clearForm();
+    showMessage('تم إلغاء التعديل.');
+}
+
+renderStations();
 </script>
+
 </body>
 </html>
