@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مراقبة المحطات | GLOBAL ENERGY</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101827;color:white;font-family:Tahoma,Arial;line-height:1.8}
+header{background:#17243a;padding:20px;text-align:center;border-bottom:2px solid #35c9a0}
+header h2{color:#35c9a0;margin:0}
+main{max-width:1000px;margin:auto;padding:25px 16px}
+h2,h3{color:#35c9a0}
+.panel{background:#1c2b40;border:1px solid #30445c;border-radius:12px;padding:20px;margin:18px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.value{font-size:25px;color:#35c9a0;font-weight:bold}
+label{display:block;margin:10px 0 5px}
+input,select{width:100%;padding:12px;border-radius:7px;border:1px solid #52647a;background:#101827;color:white}
+button,.btn{display:inline-block;background:#35c9a0;color:#10202a;padding:11px 20px;border:0;border-radius:7px;font-weight:bold;cursor:pointer;text-decoration:none;margin-top:12px}
+.muted{color:#bdc9d5;font-size:13px}
+.status{color:#f4c66b}
+</style>
+</head>
+<body>
+<header>
+<h2>GLOBAL ENERGY & TECHNOLOGY</h2>
+<div>نظام مراقبة محطات الطاقة الشمسية</div>
+</header>
+<main>
+<a class="btn" href="index.html">العودة للرئيسية</a>
+<section class="panel">
+<h2>لوحة مراقبة المحطات</h2>
+<p>تابع محطاتك وأنظمة الطاقة من مكان واحد.</p>
+</section>
+<section class="panel">
+<h3>إضافة محطة جديدة</h3>
+<label>اسم المحطة</label>
+<input id="stationName" placeholder="مثلاً: محطة المنزل">
+<label>نوع الإنفرتر</label>
+<select id="inverter">
+<option value="">اختر نوع الإنفرتر</option>
+<option>SMA</option>
+<option>Voltronic / Axpert</option>
+<option>GoodWe</option>
+<option>Solis</option>
+<option>Huawei</option>
+<option>Growatt</option>
+<option>Deye</option>
+<option>DYA</option>
+</select>
+<label>قدرة المحطة بالكيلوواط</label>
+<input id="capacity" type="number" min="0" placeholder="مثلاً 10">
+<button onclick="addStation()">إضافة المحطة</button>
+<div id="message" class="muted"></div>
+</section>
+<section class="panel">
+<h3>محطاتي</h3>
+<div id="stations" class="grid">
+<p class="muted">لم تتم إضافة محطات بعد.</p>
+</div>
+</section>
+<section class="panel">
+<h3>مؤشرات الطاقة</h3>
+<div class="grid">
+<div class="panel"><div class="muted">إنتاج الطاقة اليوم</div><div class="value">-- kWh</div></div>
+<div class="panel"><div class="muted">استهلاك الطاقة</div><div class="value">-- kWh</div></div>
+<div class="panel"><div class="muted">شحن البطارية</div><div class="value">-- %</div></div>
+<div class="panel"><div class="muted">حالة الإنفرتر</div><div class="value">غير متصل</div></div>
+</div>
+<p class="status">هذه واجهة تجريبية. البيانات الحقيقية تحتاج ربطاً بأجهزة الإنفرتر وواجهات المراقبة الخاصة بها.</p>
+</section>
+</main>
+<script>
+function addStation(){
+const name=document.getElementById('stationName').value.trim();
+const inverter=document.getElementById('inverter').value;
+const capacity=document.getElementById('capacity').value;
+const message=document.getElementById('message');
+if(!name||!inverter||!capacity||Number(capacity)<=0){
+message.textContent='يرجى إدخال جميع بيانات المحطة بشكل صحيح.';
+return;
+}
+const card=document.createElement('div');
+card.className='panel';
+const title=document.createElement('h3');
+title.textContent=name;
+const details=document.createElement('p');
+details.textContent='الإنفرتر: '+inverter+' | القدرة: '+capacity+' kW';
+const status=document.createElement('p');
+status.className='status';
+status.textContent='بانتظار ربط الجهاز';
+card.append(title,details,status);
+const stations=document.getElementById('stations');
+if(stations.querySelector('.muted'))stations.innerHTML='';
+stations.appendChild(card);
+document.getElementById('stationName').value='';
+document.getElementById('inverter').value='';
+document.getElementById('capacity').value='';
+message.textContent='تمت إضافة المحطة إلى القائمة التجريبية.';
+}
+</script>
+</body>
+</html>
