@@ -13,7 +13,13 @@
     "minimum_ils": 500,
     "trigger": "verified_completed_contractual_project",
     "scaling": "capacity_and_contract_value",
-    "tiers": "pending_approval"
+    "tiers": "pending_approval",
+    "payer": "contracted_installation_company",
+    "payee": "platform",
+    "customer_commission_due": false,
+    "separate_from_customer_request_fee": true,
+    "signed_company_agreement_required": true,
+    "undisclosed_customer_surcharge_prohibited": true
   },
   "companies": {
     "registration_required": true,
