@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "status": "draft",
+  "remote_services": [
+    "inverter_configuration",
+    "authorized_firmware_update",
+    "fault_diagnosis",
+    "feasibility_reassessment",
+    "performance_analysis",
+    "expansion_design",
+    "battery_assessment",
+    "installation_review",
+    "monitoring_reconnection"
+  ],
+  "remote_change_controls": {
+    "owner_consent": true,
+    "qualified_operator": true,
+    "read_only_default": true,
+    "manufacturer_supported_methods": true,
+    "backup_configuration": true,
+    "rollback_plan": true,
+    "high_risk_independent_approval": true,
+    "audit_log": true,
+    "onsite_escalation": true
+  },
+  "commission_integrity": {
+    "unique_project_reference": true,
+    "signed_company_agreement": true,
+    "customer_confirmation": true,
+    "contract_reconciliation": true,
+    "restricted_contact_access": true,
+    "transparent_referral_terms": true,
+    "customer_choice_preserved": true,
+    "no_private_device_surveillance": true
+  },
+  "oversight": {
+    "independent_review": true,
+    "random_risk_based_audits": true,
+    "reviewer_rotation": true,
+    "conflict_of_interest_disclosure": true,
+    "confidential_reporting": true,
+    "no_reward_for_accusation_count": true,
+    "verified_evidence_required": true,
+    "anti_retaliation": true,
+    "appeal": true,
+    "proportionate_sanctions": true,
+    "founder_escalation": true
+  },
+  "signals": [
+    "duplicate_project",
+    "unusual_cancellation",
+    "repeated_worker_company_pairing",
+    "unexplained_quote_changes",
+    "missing_completion_confirmation",
+    "unauthorized_access"
+  ],
+  "signals_are_not_proof": true,
+  "legal_review_required": true,
+  "payments_enabled": false
+}
