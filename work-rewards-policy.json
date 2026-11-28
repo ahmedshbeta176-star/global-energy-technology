@@ -64,12 +64,48 @@
     "no_duplicate_rewards": true,
     "no_paid_levels": true,
     "no_recruitment_only_rewards": true,
-    "retroactive_changes": false
+    "retroactive_changes": false,
+    "points_on_submission": false,
+    "points_on_online_time": false,
+    "independent_reviewer_required": true,
+    "conflict_of_interest_review": true,
+    "duplicate_evidence_rejected": true,
+    "reopened_tasks_hold_unvested_points": true
   },
   "distribution": {
     "policy": "profit-policy.json",
     "formula": "worker_weighted_approved_points / total_weighted_approved_points * eligible_worker_pool",
     "zero_points": "hold_for_review",
     "automatic_payout": false
+  },
+  "verification": {
+    "status": "proposed",
+    "server_timestamped_events": true,
+    "record_active_work_sessions": true,
+    "idle_time_excluded": true,
+    "intrusive_surveillance": false,
+    "minimum_observation_window_by_task_type": true,
+    "observation_duration": "risk_based_pending_configuration",
+    "evidence": [
+      "problem_description",
+      "reproduction_or_initial_state",
+      "work_log",
+      "resolution_evidence",
+      "independent_confirmation"
+    ],
+    "high_risk_tasks": {
+      "separate_executor_and_reviewer": true,
+      "second_independent_reviewer": true,
+      "post_resolution_monitoring": true
+    },
+    "collaboration": {
+      "multiple_contributors_allowed": true,
+      "document_individual_contributions": true,
+      "allocate_single_task_reward_across_contributors": true
+    },
+    "points_release": "after_review_and_required_observation",
+    "daily_point_caps": "pending_calibration",
+    "promotion": "sustained_quality_and_verified_contributions_over_time",
+    "appeal": true
   }
 }
