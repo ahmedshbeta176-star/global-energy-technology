@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "status": "draft",
+  "management": {
+    "roles": [
+      "contributor",
+      "expert",
+      "supervisor",
+      "department_manager",
+      "executive",
+      "founder"
+    ],
+    "promotion_basis": [
+      "verified_skill",
+      "quality",
+      "leadership",
+      "customer_feedback"
+    ],
+    "delegation": "scoped_revocable",
+    "supervision_rewards": {
+      "basis": "verified_supervisory_contribution",
+      "recruitment_only": false,
+      "multi_level_recruitment_rewards": false,
+      "cap": "pending_approval",
+      "no_duplicate_task_reward": true
+    }
+  },
+  "integrations": {
+    "provider_adapters": true,
+    "sandbox_required": true,
+    "independent_review": true,
+    "production_approval_required": true,
+    "secret_access": "least_privilege",
+    "customer_authorization_required": true
+  },
+  "energy_projects": {
+    "workflow": [
+      "requirements",
+      "site_data",
+      "load_analysis",
+      "preliminary_sizing",
+      "cost_estimate",
+      "qualified_engineer_review",
+      "customer_delivery"
+    ],
+    "ai_estimates_not_final_engineering": true
+  },
+  "support": {
+    "channels": [
+      "customer_worker_chat",
+      "ai_assisted_chat",
+      "team_chat"
+    ],
+    "ticket_escalation": true,
+    "customer_feedback": true,
+    "verified_service_reviews": true,
+    "privacy_and_access_controls": true,
+    "ai_disclosure": true
+  },
+  "payments_enabled": false
+}
