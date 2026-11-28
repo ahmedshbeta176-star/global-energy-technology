@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "status": "draft",
+  "launch": {
+    "country": "PS",
+    "region": "West Bank"
+  },
+  "customer_fee": {
+    "maximum_usd": 2,
+    "payments_enabled": false
+  },
+  "commission": {
+    "minimum_ils": 500,
+    "trigger": "verified_completed_contractual_project",
+    "scaling": "capacity_and_contract_value",
+    "tiers": "pending_approval"
+  },
+  "companies": {
+    "registration_required": true,
+    "legal_agreement_required": true,
+    "qualification_review": true
+  },
+  "intake": [
+    "location",
+    "property_type",
+    "floors",
+    "roof_area",
+    "monthly_bill",
+    "monthly_kwh",
+    "phase",
+    "outages",
+    "system_type",
+    "battery_backup",
+    "loads",
+    "mounting_type",
+    "steel_specification",
+    "cable_distance",
+    "shade",
+    "budget",
+    "attachments"
+  ],
+  "quote_fields": [
+    "company",
+    "panel_brand_model_quantity",
+    "inverter_brand_model",
+    "battery_brand_model_capacity",
+    "steel_specification",
+    "cables_and_protection",
+    "installation",
+    "taxes",
+    "total",
+    "warranties",
+    "delivery",
+    "validity",
+    "exclusions"
+  ],
+  "privacy": {
+    "customer_consent_required": true,
+    "restricted_address_and_contact": true
+  },
+  "engineering": {
+    "preliminary_quotes": true,
+    "site_survey_required": true,
+    "qualified_review_required": true
+  },
+  "comparison": {
+    "transparent_commission": true,
+    "no_paid_ranking": true
+  },
+  "legal_review_pending": true
+}
