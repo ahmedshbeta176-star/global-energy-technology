@@ -58,7 +58,19 @@
     "warranties",
     "delivery",
     "validity",
-    "exclusions"
+    "exclusions",
+    "item_quantity",
+    "unit_price",
+    "labor",
+    "transport",
+    "mounting_height",
+    "steel_weight_or_spec",
+    "cable_cross_section_and_length",
+    "grounding",
+    "permits",
+    "site_survey_conditions",
+    "currency",
+    "agency_territory"
   ],
   "privacy": {
     "customer_consent_required": true,
@@ -73,5 +85,93 @@
     "transparent_commission": true,
     "no_paid_ranking": true
   },
-  "legal_review_pending": true
+  "legal_review_pending": true,
+  "expansion": {
+    "global": true,
+    "country_specific_currency": true,
+    "local_electrical_rules": true,
+    "agency_routing_by_authorized_territory": true,
+    "customer_choice_preserved": true
+  },
+  "intake_sections": {
+    "location": [
+      "country",
+      "region",
+      "city",
+      "map_pin_optional"
+    ],
+    "property": [
+      "type",
+      "floors",
+      "height",
+      "roof_access",
+      "usable_length_m",
+      "usable_width_m",
+      "obstacles",
+      "shade"
+    ],
+    "electricity": [
+      "monthly_bill",
+      "currency",
+      "monthly_kwh",
+      "seasonal_consumption",
+      "phase",
+      "main_breaker",
+      "outage_hours"
+    ],
+    "loads": [
+      "device_type",
+      "quantity",
+      "watts",
+      "daily_hours",
+      "simultaneous_load",
+      "motor_starting_load",
+      "critical_load"
+    ],
+    "system": [
+      "goal",
+      "grid_type",
+      "backup_hours",
+      "existing_system"
+    ],
+    "installation": [
+      "mounting_type",
+      "structure_height",
+      "steel_finish",
+      "cable_route_distance",
+      "access_constraints"
+    ],
+    "readiness": [
+      "budget",
+      "target_date",
+      "owner_or_authorized",
+      "verified_contact",
+      "consent_to_share",
+      "attachments"
+    ]
+  },
+  "seriousness": {
+    "verified_contact": true,
+    "duplicate_request_check": true,
+    "owner_authorization_declaration": true,
+    "confirm_intent": true,
+    "fee_max_usd": 2,
+    "fee_enabled": false,
+    "manual_review_if_needed": true
+  },
+  "sizing": {
+    "preliminary_only": true,
+    "inputs": [
+      "daily_energy_kwh",
+      "peak_simultaneous_kw",
+      "surge_load",
+      "local_solar_resource",
+      "system_losses",
+      "usable_area",
+      "backup_energy",
+      "battery_usable_fraction"
+    ],
+    "missing_inputs_flagged": true,
+    "qualified_review_required": true
+  }
 }
