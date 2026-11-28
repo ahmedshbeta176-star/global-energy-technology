@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "date": "2026-11-28",
+  "policies": [
+    "operations-policy.json",
+    "work-rewards-policy.json",
+    "profit-policy.json",
+    "management-integrations-policy.json",
+    "solar-project-market-policy.json",
+    "integrity-and-remote-services-policy.json"
+  ],
+  "verified_policy_files": [
+    "operations-policy.json",
+    "work-rewards-policy.json",
+    "profit-policy.json",
+    "management-integrations-policy.json",
+    "solar-project-market-policy.json",
+    "integrity-and-remote-services-policy.json"
+  ],
+  "status": "implementation_incomplete",
+  "phases": [
+    {
+      "id": "operations",
+      "scope": [
+        "task assignment",
+        "independent review",
+        "inactivity revocation",
+        "audit",
+        "role progression"
+      ],
+      "status": "pending_backend"
+    },
+    {
+      "id": "solar_market",
+      "scope": [
+        "assisted intake",
+        "company agreements",
+        "itemized quotes",
+        "supervision",
+        "remote services"
+      ],
+      "status": "pending_backend"
+    },
+    {
+      "id": "support",
+      "scope": [
+        "chat",
+        "complaints",
+        "reviews",
+        "free trades directory"
+      ],
+      "status": "pending_backend"
+    },
+    {
+      "id": "finance",
+      "scope": [
+        "verified rewards",
+        "commission reconciliation",
+        "net profit distribution"
+      ],
+      "status": "simulation_only"
+    },
+    {
+      "id": "integrations",
+      "scope": [
+        "authorized inverter adapters",
+        "AI",
+        "payments"
+      ],
+      "status": "deferred"
+    }
+  ],
+  "release_gates": [
+    "database authorization tests",
+    "cross-account tests",
+    "privacy and safety review",
+    "legal review",
+    "live deployment tests"
+  ],
+  "payments_enabled": false
+}
