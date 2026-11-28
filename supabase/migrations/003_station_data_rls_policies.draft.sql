@@ -108,7 +108,10 @@ using (
 )
 with check (
   (select public.is_station_owner(station_id))
-  or assigned_to = (select auth.uid())
+  or (
+    assigned_to = (select auth.uid())
+    and (select public.can_access_station(station_id))
+  )
 );
 
 -- No DELETE policy is intentionally provided for maintenance records (auditability).
