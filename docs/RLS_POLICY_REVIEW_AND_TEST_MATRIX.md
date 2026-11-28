@@ -43,3 +43,29 @@ Use separate test identities and seeded test stations in a non-production enviro
 
 ## Release gate
 Do not apply this draft to production. First test on a disposable/staging database with test users and sample stations, review the SQL, and confirm a restorable backup. No existing production table or row has been changed by this draft.
+
+
+## Existing core-table policy draft
+Draft file: supabase/migrations/005_core_tables_rls_policies.draft.sql
+
+Proposed behavior:
+- profiles: each signed-in user can read/create/update only their own profile.
+- stations: owner can create/manage their own station; active station members can read it.
+- station_members: member can see their own membership; station owner can manage memberships.
+- station_member_permissions: member can read their own station permissions; station owner can manage permissions.
+- station_activity_logs: owner and active members can read; authenticated station members can append entries only with actor_id=auth.uid(); no update/delete policies.
+
+## Additional tests required for core tables
+1. User A cannot read or update User B's profile.
+2. A station owner can create a station only with owner_id=auth.uid().
+3. A station member can read only stations where they have an active membership.
+4. A member cannot add, update, or remove another member.
+5. A station owner can invite/manage members only for stations they own.
+6. A station member cannot grant or change permissions for themselves or others.
+7. A station owner cannot grant platform Founder/Super Admin privileges through station membership or station_member_permissions.
+8. A user cannot forge actor_id in activity logs.
+9. Activity logs cannot be updated or deleted by browser users.
+10. Inactive or non-active membership loses station access.
+
+## Important schema limitation
+station_members currently has both role and role_label columns, with defaults, and station_member_permissions.permission_key is free text. Before allowing owner-managed membership writes, normalize the role source and define an explicit allowlist of station-scoped permission keys. The SQL draft intentionally must not be treated as final authorization for assigning roles until that allowlist is agreed and tested.
