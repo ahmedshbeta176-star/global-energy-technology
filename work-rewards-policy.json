@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "status": "proposed_for_testing",
+  "eligibility": "verified_contribution",
+  "levels": [
+    {
+      "id": "starter",
+      "multiplier": 1
+    },
+    {
+      "id": "active",
+      "multiplier": 1.1
+    },
+    {
+      "id": "advanced",
+      "multiplier": 1.2
+    },
+    {
+      "id": "professional",
+      "multiplier": 1.35
+    },
+    {
+      "id": "distinguished",
+      "multiplier": 1.5
+    }
+  ],
+  "promotion_thresholds": null,
+  "task_types": [
+    {
+      "id": "daily_review",
+      "name": "مراجعة قائمة العمل اليومية",
+      "points": 10
+    },
+    {
+      "id": "support",
+      "name": "حل مشكلة دعم موثقة",
+      "points": 25
+    },
+    {
+      "id": "solar_monitoring",
+      "name": "متابعة محطة مصرح بها",
+      "points": 15
+    },
+    {
+      "id": "content",
+      "name": "محتوى مفيد معتمد",
+      "points": 20
+    },
+    {
+      "id": "merchant_activation",
+      "name": "استقطاب تاجر نشط",
+      "points": 30
+    },
+    {
+      "id": "verified_referral",
+      "name": "إحالة تحقق نشاطاً فعلياً",
+      "points": 10
+    }
+  ],
+  "controls": {
+    "independent_review": true,
+    "evidence_required": true,
+    "no_self_approval": true,
+    "no_duplicate_rewards": true,
+    "no_paid_levels": true,
+    "no_recruitment_only_rewards": true,
+    "retroactive_changes": false
+  },
+  "distribution": {
+    "policy": "profit-policy.json",
+    "formula": "worker_weighted_approved_points / total_weighted_approved_points * eligible_worker_pool",
+    "zero_points": "hold_for_review",
+    "automatic_payout": false
+  }
+}
