@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "status": "draft_not_payable",
+  "currency": "USD",
+  "net_profit_distribution": {
+    "founder_percent": 50,
+    "eligible_workers_pool_percent": 50,
+    "positive_realized_net_profit_only": true,
+    "after_operating_costs": true,
+    "after_direct_commissions_and_rewards": true,
+    "after_applicable_taxes": true
+  },
+  "iptv": {
+    "platform_usd_per_eligible_sale": 1,
+    "workers_reward_usd_per_eligible_sale": 1,
+    "exclude_refunded_sales": true,
+    "workers_reward_deducted_before_general_profit_split": true
+  },
+  "solar_monitoring": {
+    "referral_percent": 20
+  },
+  "marketplace": {
+    "general_net_profit_split_applies": true,
+    "separate_duplicate_split": false
+  },
+  "worker_allocation": {
+    "method": "pending_approval"
+  },
+  "payments_enabled": false,
+  "automatic_payouts_enabled": false
+}
