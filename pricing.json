@@ -1,0 +1,42 @@
+{
+  "currency": "USD",
+  "status": "draft",
+  "version": 1,
+  "plans": [
+    {
+      "id": "individual",
+      "name": "الأفراد",
+      "amount": 3,
+      "interval": "month"
+    },
+    {
+      "id": "basic",
+      "name": "الأساسي",
+      "amount": 5,
+      "interval": "month"
+    },
+    {
+      "id": "business",
+      "name": "الشركات",
+      "amount": 10,
+      "interval": "month"
+    },
+    {
+      "id": "merchant",
+      "name": "التجار",
+      "amount": 5,
+      "interval": "month"
+    },
+    {
+      "id": "provider_directory",
+      "name": "إدراج مقدم الخدمة",
+      "amount": 2,
+      "interval": "once"
+    }
+  ],
+  "notes": [
+    "الأسعار مقترحة وقابلة للتعديل قبل الإطلاق",
+    "لا توجد مدفوعات أو اشتراكات مفعلة",
+    "عمليات البيع بين التاجر والمشتري خارج المنصة"
+  ]
+}
