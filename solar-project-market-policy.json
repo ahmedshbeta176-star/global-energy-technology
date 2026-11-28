@@ -258,5 +258,21 @@
       "documented_responsibilities": true
     },
     "independent_quality_review": true
+  },
+  "supervision_pricing": {
+    "status": "draft",
+    "external_project_engineering_assessment": "customer_paid",
+    "external_project_installation_supervision": "customer_paid",
+    "platform_contracted_project_supervision": {
+      "customer_extra_fee": false,
+      "funding": "installer_company_commission",
+      "scope_defined_in_contract": true,
+      "supervisor_reward": "verified_work",
+      "reward_amount": "pending_approval",
+      "deduct_before_general_net_profit_distribution": true
+    },
+    "ongoing_monitoring": "separate_subscription",
+    "quote_request_fee_separate": true,
+    "payments_enabled": false
   }
 }
