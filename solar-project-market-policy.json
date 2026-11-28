@@ -173,5 +173,60 @@
     ],
     "missing_inputs_flagged": true,
     "qualified_review_required": true
+  },
+  "assisted_intake": {
+    "status": "planned",
+    "progressive_questions": true,
+    "unknown_answers_allowed": true,
+    "save_resume": true,
+    "human_help": true,
+    "ai_help_when_enabled": true,
+    "customer_confirmation_before_submission": true,
+    "task_templates": [
+      {
+        "id": "intake_help",
+        "role": "support",
+        "trigger": "customer_requests_help"
+      },
+      {
+        "id": "missing_information",
+        "role": "intake_specialist",
+        "trigger": "required_information_missing"
+      },
+      {
+        "id": "technical_review",
+        "role": "qualified_engineer",
+        "trigger": "intake_complete"
+      },
+      {
+        "id": "quote_followup",
+        "role": "marketplace_operator",
+        "trigger": "quote_overdue"
+      },
+      {
+        "id": "quote_quality",
+        "role": "independent_reviewer",
+        "trigger": "quote_received"
+      },
+      {
+        "id": "complaint",
+        "role": "support_reviewer",
+        "trigger": "customer_complaint"
+      },
+      {
+        "id": "incident",
+        "role": "technical_monitor",
+        "trigger": "verified_system_failure"
+      }
+    ],
+    "continuity": {
+      "requeue_overdue": true,
+      "backup_assignee": true,
+      "shared_case_history": true,
+      "independent_review": true
+    },
+    "customer_feedback": true,
+    "reward_policy": "work-rewards-policy.json",
+    "no_reward_for_fabricated_incidents": true
   }
 }
