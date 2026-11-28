@@ -68,6 +68,9 @@ button,.btn{display:inline-block;background:#35c9a0;color:#10202a;padding:11px 2
 
 <section class="panel">
 <h3>محطاتي</h3>
+<p class="muted">إدارة تجريبية محفوظة على هذا الجهاز فقط، وليست مرتبطة بحسابك أو بالإنفرترات.</p>
+<div class="grid"><div><label for="stationSearch">بحث باسم المحطة</label><input id="stationSearch" placeholder="ابحث عن محطة..." oninput="renderStations()"></div><div><label for="inverterFilter">تصفية حسب الإنفرتر</label><select id="inverterFilter" onchange="renderStations()"><option value="">جميع الأنواع</option><option>SMA</option><option>Voltronic / Axpert</option><option>GoodWe</option><option>Solis</option><option>Huawei</option><option>Growatt</option><option>Deye</option><option>DYA</option></select></div></div>
+<p id="stationSummary" aria-live="polite"></p>
 <div id="stations" class="grid">
 <p class="muted">جاري تحميل المحطات...</p>
 </div>
@@ -107,14 +110,19 @@ function showMessage(text) {
 }
 
 function renderStations() {
-    const stations = getStations();
+    const allStations = getStations();
+    const query = document.getElementById('stationSearch').value.trim().toLocaleLowerCase();
+    const inverterFilter = document.getElementById('inverterFilter').value;
+    const stations = allStations.filter(s => s.name.toLocaleLowerCase().includes(query) && (!inverterFilter || s.inverter === inverterFilter));
+    const totalCapacity = allStations.reduce((sum, s) => sum + Number(s.capacity || 0), 0);
+    document.getElementById('stationSummary').textContent = 'إجمالي المحطات: ' + allStations.length + ' | إجمالي القدرة: ' + totalCapacity.toLocaleString('ar', {maximumFractionDigits: 2}) + ' kW | النتائج المعروضة: ' + stations.length;
     const container = document.getElementById('stations');
     container.innerHTML = '';
 
     if (stations.length === 0) {
         const empty = document.createElement('p');
         empty.className = 'muted';
-        empty.textContent = 'لم تتم إضافة محطات بعد.';
+        empty.textContent = allStations.length ? 'لا توجد محطات مطابقة للبحث.' : 'لم تتم إضافة محطات بعد.';
         container.appendChild(empty);
         return;
     }
