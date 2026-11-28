@@ -5,23 +5,28 @@
   "levels": [
     {
       "id": "starter",
-      "multiplier": 1
+      "multiplier": 1,
+      "label_ar": "مبتدئ"
     },
     {
       "id": "active",
-      "multiplier": 1.1
+      "multiplier": 1.1,
+      "label_ar": "جيد"
     },
     {
       "id": "advanced",
-      "multiplier": 1.2
+      "multiplier": 1.2,
+      "label_ar": "ممتاز"
     },
     {
       "id": "professional",
-      "multiplier": 1.35
+      "multiplier": 1.35,
+      "label_ar": "محترف"
     },
     {
       "id": "distinguished",
-      "multiplier": 1.5
+      "multiplier": 1.5,
+      "label_ar": "خبير"
     }
   ],
   "promotion_thresholds": null,
@@ -107,5 +112,52 @@
     "daily_point_caps": "pending_calibration",
     "promotion": "sustained_quality_and_verified_contributions_over_time",
     "appeal": true
+  },
+  "integrity": {
+    "status": "proposed",
+    "fabricated_incidents_prohibited": true,
+    "intentional_fault_creation_prohibited": true,
+    "authorized_testing_separate_from_production": true,
+    "incident_deduplication": true,
+    "independent_evidence": true,
+    "conflict_of_interest_checks": true,
+    "collusion_review": true,
+    "sanctions": [
+      "warning",
+      "temporary_restriction",
+      "investigation",
+      "suspension"
+    ],
+    "appeal_required": true,
+    "no_automatic_confiscation_of_earned_rewards": true
+  },
+  "daily_work": {
+    "outcome_based": true,
+    "mandatory_online_hours": false,
+    "optional_side_tasks": true,
+    "capacity_based_assignment": true,
+    "quality_before_quantity": true,
+    "global_timezone_aware": true
+  },
+  "continuity": {
+    "eligible_pool_assignment": true,
+    "avoid_single_account_dependency": true,
+    "backup_assignee": true,
+    "expired_assignment_requeue": true,
+    "least_privilege": true,
+    "reviewer_rotation": true,
+    "founder_escalation": true
+  },
+  "promotion": {
+    "complete_current_level": true,
+    "criteria": [
+      "verified_quality",
+      "sustained_performance",
+      "specialty_skill",
+      "collaboration",
+      "independent_review"
+    ],
+    "thresholds": "pending_calibration",
+    "no_paid_promotion": true
   }
 }
