@@ -36,3 +36,17 @@ The draft:
 6. Remove role_label in a later reviewed migration after confirming no old app version depends on it.
 
 No database changes were applied. This is a documented decision and migration draft on the development branch.
+
+## Important separation: platform, station membership, and marketplace
+
+The station role allowlist above is intentionally limited to station-scoped access. Do not add `trader` or `store` to `station_members.role`.
+
+Keep three authorization domains separate:
+
+1. **Platform access**: Founder (the project owner alone) and any explicitly delegated platform operators with limited administrative permissions. These permissions are global and must not be granted through station membership or marketplace registration.
+2. **Station membership**: `owner`, `engineer`, and `technician` in `station_members.role`. These roles apply only to the specific station and its assigned permissions.
+3. **Marketplace & commercial operations**: trader is a marketplace account capability; a store is a business entity owned/managed by that trader, not a user role. The trader can manage only their own store, products, listings, and orders. Marketplace customers can browse/buy and access only their own orders. Marketplace registration must not grant access to station data or platform administration.
+
+A single person may hold more than one independent capability (for example, be a station owner and also operate a marketplace store). Each capability is checked in its own domain and does not automatically imply the others.
+
+The marketplace remains a separate subsystem/document: `MARKETPLACE & COMMERCIAL OPERATIONS`. Do not conflate it with `MEMBERSHIP & PARTICIPATION` or station membership.
