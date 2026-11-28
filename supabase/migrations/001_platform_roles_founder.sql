@@ -14,6 +14,11 @@ create table if not exists public.platform_user_roles (
 
 alter table public.platform_user_roles enable row level security;
 
+-- Database-level guarantee: at most one Founder row can exist.
+create unique index if not exists platform_user_roles_single_founder
+    on public.platform_user_roles ((role))
+    where role = 'founder';
+
 -- No direct client access. Only trusted database/server administration may
 -- manage this table. Do not add client INSERT/UPDATE/DELETE policies.
 revoke all on table public.platform_user_roles from public, anon, authenticated;
