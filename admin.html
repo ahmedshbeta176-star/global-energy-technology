@@ -1,234 +1,58 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GLOBAL ENERGY & TECHNOLOGY - لوحة الإدارة</title>
+<title>لوحة الإدارة | GLOBAL ENERGY</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Tahoma,Arial;background:#f2f5f8;color:#203247}
-header{background:#102b43;color:white;padding:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
-header h1{font-size:20px;margin:0 0 6px}
-.layout{display:flex;min-height:calc(100vh - 75px)}
-nav{width:225px;background:#183a56;padding:12px;flex-shrink:0}
-nav button{display:block;width:100%;padding:12px;margin:3px 0;text-align:right;border:0;border-radius:7px;background:transparent;color:white;cursor:pointer;font:inherit}
-nav button:hover,nav button.active{background:#286080}
-main{flex:1;min-width:0;padding:22px}
-.page{display:none}.page.active{display:block}
-h2{margin-top:0}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.card,.panel{background:white;border:1px solid #e1e8ef;border-radius:10px;padding:16px;margin-bottom:14px}
-.card span{color:#718397;font-size:13px}
-.card strong{display:block;font-size:27px;color:#07966d;margin-top:8px}
-.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-input{padding:10px;border:1px solid #d5dfe8;border-radius:7px;font:inherit}
-.action{padding:10px 14px;border:0;border-radius:7px;background:#07966d;color:white;cursor:pointer;font:inherit}
-.secondary{background:#e7edf2;color:#263f55}
-.danger{background:#bd4545}
-.small{padding:6px 9px;font-size:12px;margin:2px}
-.table-wrap{overflow-x:auto;background:white;border-radius:9px}
-table{width:100%;border-collapse:collapse;min-width:600px}
-th,td{text-align:right;padding:11px;border-bottom:1px solid #e7edf2;font-size:13px}
-th{background:#f6f8fa}
-.notice{background:#fff6df;color:#785914;padding:12px;border-radius:8px;margin-bottom:15px;font-size:13px}
-.muted{color:#718397;font-size:13px}
-@media(max-width:700px){
-.layout{display:block}
-nav{width:100%;display:flex;overflow-x:auto}
-nav button{white-space:nowrap;width:auto;min-width:max-content}
-main{padding:13px}
-}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;background:#101827;color:#fff;font-family:Tahoma,Arial,sans-serif;line-height:1.8}
+main{width:min(100%,620px);background:#1c2b40;border:1px solid #30445c;border-radius:16px;padding:26px}
+h1{color:#35c9a0;font-size:23px;margin:0 0 8px}p{color:#d0d9e5}.notice{padding:14px;border-radius:9px;background:#352f1d;color:#f4d58a;margin:18px 0}
+a,button{display:inline-block;margin:6px 4px 0 0;padding:11px 17px;border-radius:8px;border:1px solid #35c9a0;background:#35c9a0;color:#10202a;text-decoration:none;font:inherit;font-weight:bold;cursor:pointer}
+.secondary{background:transparent;color:#35c9a0}#status{color:#c5cfdd;white-space:pre-wrap}
 </style>
 </head>
 <body>
-<header>
- <div>
-  <h1>GLOBAL ENERGY & TECHNOLOGY</h1>
-  <small>لوحة الإدارة والتحكم</small>
- </div>
- <span>الإصدار التجريبي 1.0</span>
-</header>
-
-<div class="layout">
-<nav id="menu">
- <button class="active" data-page="dashboard">🏠 الرئيسية</button>
- <button data-page="users">👥 المستخدمون</button>
- <button data-page="stations">☀️ محطات الطاقة</button>
- <button data-page="technicians">🧰 الفنيون</button>
- <button data-page="traders">🏪 التجار</button>
- <button data-page="products">🛒 المتجر</button>
- <button data-page="subscriptions">💳 الاشتراكات</button>
- <button data-page="commissions">🤝 العمولات والإحالات</button>
- <button data-page="requests">📩 طلبات الخدمات</button>
- <button data-page="reports">📊 التقارير</button>
- <button data-page="settings">⚙️ الإعدادات</button>
-</nav>
-
 <main>
-<section class="page active" id="dashboard">
- <h2>لوحة المعلومات الرئيسية</h2>
- <div class="notice">نسخة تجريبية: البيانات محفوظة في هذا المتصفح فقط، ولا يوجد اتصال بقاعدة بيانات حالياً.</div>
- <div class="cards">
-  <div class="card"><span>المستخدمون</span><strong id="count-users">0</strong></div>
-  <div class="card"><span>المحطات</span><strong id="count-stations">0</strong></div>
-  <div class="card"><span>الفنيون</span><strong id="count-technicians">0</strong></div>
-  <div class="card"><span>التجار</span><strong id="count-traders">0</strong></div>
-  <div class="card"><span>طلبات الخدمات</span><strong id="count-requests">0</strong></div>
- </div>
- <div class="panel">
-  <h3>مرحباً بك في لوحة الإدارة</h3>
-  <p class="muted">اختر القسم من القائمة لإضافة البيانات وتعديلها وحذفها.</p>
- </div>
-</section>
-
-<section class="page" id="users"><h2>المستخدمون</h2><div id="area-users"></div></section>
-<section class="page" id="stations"><h2>محطات الطاقة</h2><div id="area-stations"></div></section>
-<section class="page" id="technicians"><h2>الفنيون</h2><div id="area-technicians"></div></section>
-<section class="page" id="traders"><h2>التجار</h2><div id="area-traders"></div></section>
-<section class="page" id="products"><h2>المتجر الإلكتروني</h2><div id="area-products"></div></section>
-<section class="page" id="subscriptions"><h2>الاشتراكات</h2><div id="area-subscriptions"></div></section>
-<section class="page" id="commissions"><h2>العمولات والإحالات</h2><div id="area-commissions"></div></section>
-<section class="page" id="requests"><h2>طلبات الخدمات</h2><div id="area-requests"></div></section>
-
-<section class="page" id="reports">
- <h2>التقارير</h2>
- <div class="panel">
-  <p>تنزيل نسخة احتياطية من البيانات التجريبية.</p>
-  <button class="action" onclick="backup()">تنزيل نسخة JSON</button>
- </div>
-</section>
-
-<section class="page" id="settings">
- <h2>الإعدادات</h2>
- <div class="panel">
-  <p>اسم المنصة: GLOBAL ENERGY & TECHNOLOGY</p>
-  <p>نوع النظام: تجريبي محلي</p>
-  <p>قاعدة البيانات: غير مربوطة حالياً</p>
-  <button class="action danger" onclick="resetData()">إعادة البيانات التجريبية</button>
- </div>
-</section>
-</main>
+<h1>GLOBAL ENERGY & TECHNOLOGY</h1>
+<h2>لوحة الإدارة</h2>
+<p id="status">جارٍ التحقق من جلسة الدخول…</p>
+<div class="notice" id="notice">الوصول الإداري متوقف مؤقتاً إلى أن نكمل التحقق من دور Founder/Administrator وسياسات قاعدة البيانات. تسجيل الدخول وحده لا يمنح صلاحية الإدارة.</div>
+<div>
+<a href="login.html" id="loginLink">تسجيل الدخول</a>
+<a href="index.html" class="secondary">الصفحة الرئيسية</a>
+<button id="logoutButton" class="secondary" hidden>تسجيل الخروج</button>
 </div>
-
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const sections={
-users:{fields:["الاسم","الهاتف","البريد الإلكتروني","الحالة"],keys:["name","phone","email","status"],sample:[{name:"مستخدم تجريبي",phone:"0590000000",email:"user@example.com",status:"نشط"}]},
-stations:{fields:["اسم المحطة","المالك","نوع الانفرتر","القدرة kW","الحالة"],keys:["name","owner","inverter","power","status"],sample:[{name:"محطة تجريبية",owner:"مالك تجريبي",inverter:"Deye",power:"10",status:"تجريبية"}]},
-technicians:{fields:["الاسم","الهاتف","التخصص","المنطقة"],keys:["name","phone","specialty","area"],sample:[{name:"فني تجريبي",phone:"0591111111",specialty:"تركيب وصيانة",area:"قلقيلية"}]},
-traders:{fields:["اسم التاجر","الهاتف","المدينة","الحالة"],keys:["name","phone","city","status"],sample:[{name:"تاجر تجريبي",phone:"0592222222",city:"قلقيلية",status:"فعال"}]},
-products:{fields:["اسم المنتج","التصنيف","السعر","التوفر"],keys:["name","category","price","availability"],sample:[{name:"لوح شمسي تجريبي",category:"ألواح",price:"100",availability:"متوفر"}]},
-subscriptions:{fields:["اسم المشترك","الخطة","السعر الشهري","الحالة"],keys:["name","plan","price","status"],sample:[{name:"مشترك تجريبي",plan:"أساسية",price:"5",status:"تجريبي"}]},
-commissions:{fields:["المُحيل","المشترك الجديد","نسبة العمولة","الحالة"],keys:["referrer","newUser","rate","status"],sample:[{referrer:"مستخدم تجريبي",newUser:"مشترك تجريبي",rate:"20%",status:"قيد الدراسة"}]},
-requests:{fields:["صاحب الطلب","نوع الخدمة","المنطقة","الحالة"],keys:["owner","service","area","status"],sample:[{owner:"عميل تجريبي",service:"فحص نظام شمسي",area:"بديا",status:"جديد"}]}
-};
-
-const storageKey="global_energy_admin_demo";
-function initialData(){
- const result={};
- Object.keys(sections).forEach(k=>result[k]=sections[k].sample.map(x=>({...x})));
- return result;
-}
-function loadData(){
- try{
-  const saved=localStorage.getItem(storageKey);
-  if(saved)return JSON.parse(saved);
- }catch(e){}
- return initialData();
-}
-let data=loadData();
-function save(){localStorage.setItem(storageKey,JSON.stringify(data));}
-function safe(value){
- return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-}
-
-document.querySelectorAll("#menu button").forEach(button=>{
- button.addEventListener("click",()=>{
-  document.querySelectorAll("#menu button").forEach(b=>b.classList.remove("active"));
-  button.classList.add("active");
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(button.dataset.page).classList.add("active");
- });
-});
-
-function render(key){
- const def=sections[key];
- const host=document.getElementById("area-"+key);
- host.innerHTML=
- '<div class="toolbar"><input id="search-'+key+'" placeholder="بحث..." oninput="draw(\''+key+'\')"><button class="action" onclick="addRecord(\''+key+'\')">＋ إضافة جديد</button></div>'+
- '<div class="table-wrap"><table><thead><tr>'+
- def.fields.map(f=>"<th>"+safe(f)+"</th>").join("")+
- '<th>الإجراءات</th></tr></thead><tbody id="rows-'+key+'"></tbody></table></div>';
- draw(key);
-}
-
-function draw(key){
- const def=sections[key];
- const tbody=document.getElementById("rows-"+key);
- if(!tbody)return;
- const query=(document.getElementById("search-"+key).value||"").toLowerCase();
- const records=data[key].map((record,index)=>({record,index})).filter(x=>Object.values(x.record).join(" ").toLowerCase().includes(query));
- if(!records.length){
-  tbody.innerHTML='<tr><td colspan="'+(def.fields.length+1)+'">لا توجد بيانات</td></tr>';
+const client=window.supabase.createClient(
+ "https://dagjfsqnfrzcmtjqmypy.supabase.co",
+ "sb_publishable_Ca6rTp5OS9IxNJ0jnnaYvQ_lNRanlDK"
+);
+const statusEl=document.getElementById("status");
+const loginLink=document.getElementById("loginLink");
+const logoutButton=document.getElementById("logoutButton");
+async function checkSession(){
+ const {data,error}=await client.auth.getSession();
+ if(error){statusEl.textContent="تعذر التحقق من جلسة الدخول. حدّث الصفحة أو حاول لاحقاً.";return;}
+ if(!data.session){
+  statusEl.textContent="لم يتم تسجيل الدخول. سجّل الدخول أولاً.";
+  loginLink.hidden=false;
+  logoutButton.hidden=true;
   return;
  }
- tbody.innerHTML=records.map(({record,index})=>
-  "<tr>"+def.keys.map(k=>"<td>"+safe(record[k])+"</td>").join("")+
-  '<td><button class="action secondary small" onclick="editRecord(\''+key+'\','+index+')">تعديل</button>'+
-  '<button class="action danger small" onclick="deleteRecord(\''+key+'\','+index+')">حذف</button></td></tr>'
- ).join("");
+ statusEl.textContent="تم التحقق من تسجيل الدخول للحساب: "+data.session.user.email+"\nلكن لم يتم بعد تفعيل أو التحقق من دور الإدارة في قاعدة البيانات؛ لذلك تبقى لوحة الإدارة مغلقة لحماية بيانات المشروع.";
+ loginLink.hidden=true;
+ logoutButton.hidden=false;
 }
-
-function addRecord(key){
- const def=sections[key],record={};
- for(let i=0;i<def.keys.length;i++){
-  const value=prompt("أدخل "+def.fields[i]);
-  if(value===null)return;
-  record[def.keys[i]]=value.trim();
- }
- data[key].push(record);save();render(key);updateCounts();
-}
-
-function editRecord(key,index){
- const def=sections[key],record={...data[key][index]};
- for(let i=0;i<def.keys.length;i++){
-  const value=prompt("تعديل "+def.fields[i],record[def.keys[i]]||"");
-  if(value===null)return;
-  record[def.keys[i]]=value.trim();
- }
- data[key][index]=record;save();render(key);updateCounts();
-}
-
-function deleteRecord(key,index){
- if(!confirm("هل تريد حذف هذا السجل؟"))return;
- data[key].splice(index,1);save();render(key);updateCounts();
-}
-
-function updateCounts(){
- ["users","stations","technicians","traders","requests"].forEach(key=>{
-  document.getElementById("count-"+key).textContent=data[key].length;
- });
-}
-
-function backup(){
- const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
- const url=URL.createObjectURL(blob);
- const a=document.createElement("a");
- a.href=url;a.download="global-energy-backup.json";
- a.click();URL.revokeObjectURL(url);
-}
-
-function resetData(){
- if(!confirm("هل تريد إعادة البيانات التجريبية وحذف التغييرات؟"))return;
- data=initialData();save();
- Object.keys(sections).forEach(render);
- updateCounts();
-}
-
-Object.keys(sections).forEach(render);
-updateCounts();
-save();
+logoutButton.addEventListener("click",async()=>{
+ const {error}=await client.auth.signOut();
+ statusEl.textContent=error?"تعذر تسجيل الخروج.":"تم تسجيل الخروج بنجاح.";
+ await checkSession();
+});
+client.auth.onAuthStateChange(()=>checkSession());
+checkSession();
 </script>
 </body>
 </html>
-
