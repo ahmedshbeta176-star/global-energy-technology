@@ -159,5 +159,26 @@
     ],
     "thresholds": "pending_calibration",
     "no_paid_promotion": true
+  },
+  "inactivity": {
+    "status": "proposed",
+    "inactive_days": 30,
+    "activity_basis": "verified_work_or_required_work_communication",
+    "suspend_delegated_work_permissions": true,
+    "suspend_level_benefits": true,
+    "preserve_basic_account_access": true,
+    "requeue_unfinished_tasks": true,
+    "unearned_task_points_follow_verified_completion": true,
+    "preserve_earned_financial_entitlements": true,
+    "approved_leave_supported": true,
+    "reactivation_requires_review": true,
+    "notify_before_suspension": true,
+    "repeated_errors": "independent_review_and_proportionate_restriction",
+    "handover": {
+      "shared_task_records": true,
+      "backup_assignee": true,
+      "revoke_task_access_on_reassignment": true,
+      "audit_required": true
+    }
   }
 }
