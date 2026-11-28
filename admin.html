@@ -47,11 +47,11 @@ main{padding:13px}
   <h1>GLOBAL ENERGY & TECHNOLOGY</h1>
   <small>لوحة الإدارة والتحكم</small>
  </div>
- <span>الإصدار التجريبي 1.0</span>
+ <span>مركز الإدارة · المرحلة الأولى</span>
 </header>
 
 <div class="notice" style="margin:12px 16px;border:2px solid #c78d2b"><strong>تنبيه أمني:</strong> هذه لوحة عرض تجريبية تعمل داخل المتصفح فقط، وليست لوحة إدارة حقيقية. الأرقام والسجلات أدناه محلية ولا تمثل بيانات العملاء أو المحطات. لا تدخل بيانات حقيقية أو سرية هنا. <a href="service-reviews.html">انتقل إلى لوحة اعتماد مقدمي الخدمات المحمية</a> (تتطلب تسجيل الدخول وصلاحية المدير). · <a href="shop-reviews.html">لوحة اعتماد التجار المحمية</a></div>
-<section class="panel" style="margin:16px"><h2>مركز الإدارة الفعلي</h2><p>تتطلب إجراءات الاعتماد حساباً مخولاً في قاعدة البيانات.</p><div class="cards"><a class="card" href="service-reviews.html">اعتماد المهندسين والفنيين والشركات</a><a class="card" href="shop-reviews.html">اعتماد التجار وإيقاف المتاجر</a><a class="card" href="services.html">دليل الخدمات والطلبات</a><a class="card" href="store.html">المتجر والمنتجات</a><a class="card" href="digital-market.html">اشتراكات IPTV</a></div></section><details style="margin:16px"><summary>فتح لوحة العرض التجريبية القديمة (بيانات محلية فقط)</summary><div class="layout">
+<section class="panel" style="margin:16px"><h2>مركز الإدارة الفعلي</h2><p id="liveStatus" role="status">جار التحقق من الحساب...</p><div id="liveStats" class="cards"></div><button class="action" id="refreshLive">تحديث الإحصائيات</button> <a href="login.html">تسجيل الدخول</a><p>تتطلب إجراءات الاعتماد حساباً مخولاً في قاعدة البيانات.</p><div class="cards"><a class="card" href="service-reviews.html">اعتماد المهندسين والفنيين والشركات</a><a class="card" href="shop-reviews.html">اعتماد التجار وإيقاف المتاجر</a><a class="card" href="services.html">دليل الخدمات والطلبات</a><a class="card" href="store.html">المتجر والمنتجات</a><a class="card" href="digital-market.html">اشتراكات IPTV</a><a class="card" href="digital-vendor-review.html">اعتماد موردي IPTV</a><a class="card" href="digital-vendor-products-review.html">مراجعة منتجات IPTV</a><a class="card" href="pricing.html">الأسعار والاشتراكات</a><a class="card" href="monitoring.html">مراقبة المحطات</a></div></section><details style="margin:16px"><summary>فتح لوحة العرض التجريبية القديمة (بيانات محلية فقط)</summary><div class="layout">
 <nav id="menu">
  <button class="active" data-page="dashboard">🏠 الرئيسية</button>
  <button data-page="users">👥 المستخدمون</button>
@@ -230,6 +230,8 @@ Object.keys(sections).forEach(render);
 updateCounts();
 save();
 </script>
-</body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
+(async()=>{const status=document.getElementById('liveStatus'),host=document.getElementById('liveStats');if(!window.supabase){status.textContent='تعذر الاتصال بالخدمة';return}const client=window.supabase.createClient('https://dagjfsqnfrzcmtjqmypy.supabase.co','sb_publishable_Ca6rTp5OS9IxNJ0jnnaYvQ_lNRanlDK');const refresh=async()=>{host.replaceChildren();status.textContent='جار التحقق من الصلاحيات...';try{const {data:{user}}=await client.auth.getUser();if(!user){status.textContent='سجل الدخول بحساب إداري لعرض الإحصائيات';return}const [s,m]=await Promise.all([client.rpc('service_directory_stats'),client.rpc('list_marketplace_shop_reviews')]);function card(label,value){const e=document.createElement('div');e.className='card';const l=document.createElement('span');l.textContent=label;const v=document.createElement('strong');v.textContent=String(value);e.append(l,v);host.append(e)}if(!s.error&&s.data?.[0]){for(const [k,l] of [['total','مقدمو الخدمات'],['pending','طلبات اعتماد الخدمات'],['approved','مقدمو الخدمات المعتمدون']])card(l,s.data[0][k]??'—')}if(!m.error){card('طلبات التجار المعروضة (حتى 300)',m.data?.length??0);card('طلبات التجار المعلقة ضمن القائمة',(m.data||[]).filter(x=>x.status==='pending').length)}status.textContent=s.error&&m.error?'لا تتوفر صلاحية عرض الإحصائيات أو تعذر الاتصال':s.error||m.error?'تم تحميل جزء من الإحصائيات المتاحة لحسابك':'إحصائيات حقيقية من قاعدة البيانات'}catch(e){status.textContent='تعذر تحميل الإحصائيات'}};document.getElementById('refreshLive').onclick=refresh;await refresh()})();
+</script></body>
 </html>
 
