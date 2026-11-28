@@ -1,0 +1,183 @@
+{
+  "version": 1,
+  "status": "draft",
+  "departments": [
+    {
+      "id": "monitoring",
+      "name": "المراقبة العامة",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    },
+    {
+      "id": "solar",
+      "name": "مراقبة الطاقة الشمسية",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    },
+    {
+      "id": "requests",
+      "name": "متابعة الطلبات",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    },
+    {
+      "id": "support",
+      "name": "دعم المستخدمين",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    },
+    {
+      "id": "complaints",
+      "name": "الشكاوى والنزاعات",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    },
+    {
+      "id": "development",
+      "name": "التطوير وإصلاح الأخطاء",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    },
+    {
+      "id": "directory",
+      "name": "الدليل المهني",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    },
+    {
+      "id": "services",
+      "name": "دليل الخدمات",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    },
+    {
+      "id": "marketplace",
+      "name": "المتجر والمنتجات",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    },
+    {
+      "id": "reviews",
+      "name": "التقييمات",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    },
+    {
+      "id": "iptv",
+      "name": "IPTV",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    },
+    {
+      "id": "ai",
+      "name": "الذكاء الاصطناعي",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    },
+    {
+      "id": "marketing",
+      "name": "التسويق",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    },
+    {
+      "id": "finance",
+      "name": "الرقابة المالية",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    },
+    {
+      "id": "innovation",
+      "name": "الابتكار",
+      "daily_tasks": [
+        "review_queue",
+        "follow_assigned_tasks",
+        "submit_evidence"
+      ],
+      "side_tasks_enabled": true
+    }
+  ],
+  "workflow": [
+    "open",
+    "assigned",
+    "in_progress",
+    "submitted",
+    "under_review",
+    "approved",
+    "closed"
+  ],
+  "review": {
+    "self_approval": false,
+    "evidence_required": true,
+    "audit_required": true
+  },
+  "rewards": {
+    "policy": "profit-policy.json",
+    "weights_status": "pending_approval",
+    "payments_enabled": false
+  },
+  "terms": {
+    "versioned_acceptance_required": true,
+    "legal_review_pending": true
+  },
+  "founder": {
+    "escalation_enabled": true,
+    "emergency_controls_planned": true
+  }
+}
