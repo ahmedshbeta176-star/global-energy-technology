@@ -228,5 +228,35 @@
     "customer_feedback": true,
     "reward_policy": "work-rewards-policy.json",
     "no_reward_for_fabricated_incidents": true
+  },
+  "project_safety": {
+    "status": "planned",
+    "remote_monitoring": {
+      "customer_authorization": true,
+      "read_only_default": true,
+      "qualified_staff": true,
+      "backup_coverage": true,
+      "large_project_risk_based_coverage": true,
+      "alert_escalation": true,
+      "remote_control_requires_separate_authorization": true
+    },
+    "installation": {
+      "qualified_local_personnel": true,
+      "site_risk_assessment": true,
+      "structural_and_electrical_review": true,
+      "fall_protection": true,
+      "electrical_isolation": true,
+      "stop_work_authority": true,
+      "commissioning_checklist": true,
+      "documented_handover": true,
+      "local_regulatory_compliance": true
+    },
+    "worker_protection": {
+      "no_unsafe_task_incentives": true,
+      "report_hazards_without_retaliation": true,
+      "scope_based_access": true,
+      "documented_responsibilities": true
+    },
+    "independent_quality_review": true
   }
 }
